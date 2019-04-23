@@ -1,33 +1,226 @@
+*{
+  margin:0;
+  padding:0;
+
+}
 .App {
+  position: relative;
+  background-color:#d81926;
+  width:100%;
+  height: 100vh;
+}
+h1{
   text-align: center;
+  color:#fff;
+}
+#drum-machine{
+  position: relative;
+  width:60vw;
+  height: 500px;
+  background-color:#dedbdb;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding:0 50px;
+  align-items:center;
+  border:10px solid #fff;
+  color:#fff;
+  font-size: 30px;
+}
+.key{
+  display: grid;
+  grid-template-rows:repeat(3,100px);
+  grid-template-columns:repeat(3,100px);
+  grid-column-gap:10px;
+  grid-row-gap:10px;
+}
+.drum-pad{
+  background-color:#000;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 7px 6px 8px #000;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#display{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items:center;
+  color:#0b0e2e;
+}
+.power,.mode,.range,.bank{
+  margin:10px 0;
+  /* padding:5px; */
+}
+.toggle-1{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0px 15px 0px 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.toggle-1_input{
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.toggle-1_button{
+  position: relative;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 20px;
+  text-transform:uppercase;
+  background-color:#f2395a;
+  border:solid 1px #f2395a;
+  color:#fff;
+  width:80px;
+  height:30px;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+.toggle-1_button::before{
+  position: absolute;
+  content:"";
+  top:5px;
+  left:40px;
+  display: inline-block;
+  width:30px;
+  height: 20px;
+  padding:0 3px;
+  background-color: #fff;
+  color:#f2395a;
+}
+
+.toggle-1_input:checked + .toggle-1_button{
+  background:#029d9c;
+  border:solid 1px #029d9c;
+}
+.toggle-1_input:checked + .toggle-1_button::before{
+    left:5px;
+    content:"";
+    color:#029d9c;
+}
+
+.toggle-2{
+  
+  display: inline-block;
+  vertical-align: top;
+  margin:0px 15px 0px 0px;
+}
+.toggle-2_input{
+  display: none;
+}
+
+.toggle-2_button{
+  position: relative;
+  display: inline-block;
+  line-height:20px;
+  width:80px;
+  height:30px;
+  background-color:#f2395a;
+  border:solid 1px #f2395a;
+  transition: all 1s ease;
+  cursor: pointer;
+}
+.toggle-2_button::before{
+  position: absolute;
+  content:"";
+  top:5px;
+  left:40px;
+  height:20px;
+  width:30px;
+  background-color:#fff;
+  padding:0 3px;
+}
+
+.toggle-2_input:checked + .toggle-2_button{
+  background-color:#029d9c;
+  border:solid 1px #029d9c;
+}
+
+.toggle-2_input:checked + .toggle-2_button::before{
+  color:#029d9c;
+  content:"";
+  left:5px;
+}
+
+.range{
+  width:20vw;
+  height:8px;
+  background: #0b0e2e;
+  -webkit-appearance: none;
+  outline:none;
+  border-radius: 2px;
+}
+
+.range::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width:20px;
+  height:30px;
+  /* border-radius:50%; */
+  background-color:#029d9c;
+}
+
+.mode{
+  width:20vw;
+  height:35px;
+  background-color:#959292;
+  font-size: 20px;
+  color:#fff;
+  text-align:center;
+}
+
+@media (max-width:870px){
+  #drum-machine {
+    width:80vw;
+    height:600px;
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+    justify-content: center;
+    margin:0;
+    padding:0;
   }
-  to {
-    transform: rotate(360deg);
+  .key{
+    grid-row:1;
+    justify-content: center;
+    display:grid;
+    grid-template-rows: repeat(3, 80px);
+    grid-template-columns: repeat(3, 80px);
+    grid-column-gap:10px;
+    grid-row-gap:10px;
+  }
+ 
+}
+
+@media (max-width:610px){
+  #drum-machine{
+    width:70vw;
+    font-size: 20px;
+  }
+  .key{
+    display:grid;
+    grid-template-rows: repeat(3,70px);
+    grid-template-columns: repeat(3,70px);
+    grid-column-gap:10px;
+    grid-row-gap:10px;
+  }
+  .mode{
+    width:200px;
+    height:50px;
+    font-size: 20px;
+    color:#fff;
+  }
+  .range{
+    width:200px;
+  }
+}
+
+@media (max-width:460px){
+  #drum-machine{
+    width:85vw;
   }
 }
